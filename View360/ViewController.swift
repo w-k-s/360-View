@@ -7,16 +7,51 @@
 //
 
 import UIKit
+import Alamofire
+import SVProgressHUD
 
 class ViewController: UIViewController {
 
-    @IBOutlet var surroundView : SurroundView!
+    @IBOutlet var threeSixtyView : ThreeSixtyView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.loadQiblaDirection()
     }
 
+    func loadQiblaDirection(){
+        SVProgressHUD.show()
+        MuslimSalatApi.dailyPrayerData { (response: Response<PrayerData, NSError>) in
+            SVProgressHUD.dismiss()
+            
+            if let prayerData = response.result.value{
+                
+                print("\(prayerData)")
+                
+                let component = ThreeSixtyView.Component(
+                    name: "Forty",
+                    angle: Radians.fromDegrees(prayerData.qiblaDirectionDegrees),
+                    size: CGSize(width: 25,height: 25),
+                    color: UIColor.yellowColor()
+                )
+                self.threeSixtyView.append(component)
+            }else if let error = response.result.error {
+                let alert = UIAlertController(
+                    title: "Alert",
+                    message: error.localizedDescription,
+                    preferredStyle: .Alert
+                )
+                alert.addAction(UIAlertAction(
+                    title: "Ok",
+                    style: .Default,
+                    handler: nil
+                ))
+                self.presentViewController(alert, animated: true, completion: nil)
+            }
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -24,7 +59,7 @@ class ViewController: UIViewController {
 
 
     @IBAction func resetFirstAttitude(){
-        self.surroundView.resetFirstAttitude()
+        //self.surroundView.resetFirstAttitude()
     }
 }
 

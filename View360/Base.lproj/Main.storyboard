@@ -17,9 +17,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6xa-EF-nHq" customClass="SurroundView" customModule="View360" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6xa-EF-nHq" customClass="ThreeSixtyView" customModule="View360" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="-1" width="600" height="601"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1PR-dN-wfv">
                                 <rect key="frame" x="281" y="562" width="39" height="30"/>
@@ -50,7 +50,7 @@
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="surroundView" destination="6xa-EF-nHq" id="Jhe-FN-dWR"/>
+                        <outlet property="threeSixtyView" destination="6xa-EF-nHq" id="HZE-7P-6a0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

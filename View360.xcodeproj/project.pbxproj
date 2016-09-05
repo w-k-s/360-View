@@ -7,14 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7AD9E4151D71E7D900FF2EAA /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD9E4141D71E7D900FF2EAA /* CoreLocation.framework */; };
+		7AD9E4171D71EC4C00FF2EAA /* ThreeSixtyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD9E4161D71EC4C00FF2EAA /* ThreeSixtyView.swift */; };
 		7AEF2BBA1D55141B00459455 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEF2BB91D55141B00459455 /* AppDelegate.swift */; };
 		7AEF2BBC1D55141B00459455 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEF2BBB1D55141B00459455 /* ViewController.swift */; };
 		7AEF2BBF1D55141B00459455 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7AEF2BBD1D55141B00459455 /* Main.storyboard */; };
 		7AEF2BC11D55141B00459455 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7AEF2BC01D55141B00459455 /* Assets.xcassets */; };
 		7AEF2BC41D55141B00459455 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7AEF2BC21D55141B00459455 /* LaunchScreen.storyboard */; };
 		7AEF2BCF1D55141B00459455 /* View360Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEF2BCE1D55141B00459455 /* View360Tests.swift */; };
-		7AEF2BDA1D55144400459455 /* SurroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEF2BD91D55144400459455 /* SurroundView.swift */; };
 		7AEF2BDC1D5518DB00459455 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AEF2BDB1D5518DB00459455 /* CoreMotion.framework */; };
+		7AF53D1E1D7DE96300773F4C /* PrayerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF53D1D1D7DE96300773F4C /* PrayerData.swift */; };
+		7AF53D201D7DF6C200773F4C /* MuslimSalatApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF53D1F1D7DF6C200773F4C /* MuslimSalatApi.swift */; };
+		9C6A526AEDB4B676BB8131B5 /* Pods_View360.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DF0D1E2ECB65E21FFD3C1A1 /* Pods_View360.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,6 +32,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5DF0D1E2ECB65E21FFD3C1A1 /* Pods_View360.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_View360.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7AD9E4141D71E7D900FF2EAA /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		7AD9E4161D71EC4C00FF2EAA /* ThreeSixtyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThreeSixtyView.swift; sourceTree = "<group>"; };
 		7AEF2BB61D55141B00459455 /* View360.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = View360.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7AEF2BB91D55141B00459455 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7AEF2BBB1D55141B00459455 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -38,8 +45,11 @@
 		7AEF2BCA1D55141B00459455 /* View360Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = View360Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7AEF2BCE1D55141B00459455 /* View360Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View360Tests.swift; sourceTree = "<group>"; };
 		7AEF2BD01D55141B00459455 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7AEF2BD91D55144400459455 /* SurroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurroundView.swift; sourceTree = "<group>"; };
 		7AEF2BDB1D5518DB00459455 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		7AF53D1D1D7DE96300773F4C /* PrayerData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrayerData.swift; sourceTree = "<group>"; };
+		7AF53D1F1D7DF6C200773F4C /* MuslimSalatApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MuslimSalatApi.swift; sourceTree = "<group>"; };
+		C7183CDD7DDDE95FD8351B09 /* Pods-View360.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-View360.release.xcconfig"; path = "Pods/Target Support Files/Pods-View360/Pods-View360.release.xcconfig"; sourceTree = "<group>"; };
+		FBC99E31D808E0CF1EA68604 /* Pods-View360.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-View360.debug.xcconfig"; path = "Pods/Target Support Files/Pods-View360/Pods-View360.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,7 +57,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7AD9E4151D71E7D900FF2EAA /* CoreLocation.framework in Frameworks */,
 				7AEF2BDC1D5518DB00459455 /* CoreMotion.framework in Frameworks */,
+				9C6A526AEDB4B676BB8131B5 /* Pods_View360.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,13 +73,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		24F42C0451B412BE15F0574E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5DF0D1E2ECB65E21FFD3C1A1 /* Pods_View360.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		7AEF2BAD1D55141A00459455 = {
 			isa = PBXGroup;
 			children = (
+				7AD9E4141D71E7D900FF2EAA /* CoreLocation.framework */,
 				7AEF2BDB1D5518DB00459455 /* CoreMotion.framework */,
 				7AEF2BB81D55141B00459455 /* View360 */,
 				7AEF2BCD1D55141B00459455 /* View360Tests */,
 				7AEF2BB71D55141B00459455 /* Products */,
+				A881AD2AE1A3B0555055A17F /* Pods */,
+				24F42C0451B412BE15F0574E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -83,13 +106,14 @@
 		7AEF2BB81D55141B00459455 /* View360 */ = {
 			isa = PBXGroup;
 			children = (
+				7AF53D1C1D7DE80500773F4C /* MuslimSalatApi */,
 				7AEF2BB91D55141B00459455 /* AppDelegate.swift */,
 				7AEF2BBB1D55141B00459455 /* ViewController.swift */,
+				7AD9E4161D71EC4C00FF2EAA /* ThreeSixtyView.swift */,
 				7AEF2BBD1D55141B00459455 /* Main.storyboard */,
 				7AEF2BC01D55141B00459455 /* Assets.xcassets */,
 				7AEF2BC21D55141B00459455 /* LaunchScreen.storyboard */,
 				7AEF2BC51D55141B00459455 /* Info.plist */,
-				7AEF2BD91D55144400459455 /* SurroundView.swift */,
 			);
 			path = View360;
 			sourceTree = "<group>";
@@ -103,6 +127,24 @@
 			path = View360Tests;
 			sourceTree = "<group>";
 		};
+		7AF53D1C1D7DE80500773F4C /* MuslimSalatApi */ = {
+			isa = PBXGroup;
+			children = (
+				7AF53D1F1D7DF6C200773F4C /* MuslimSalatApi.swift */,
+				7AF53D1D1D7DE96300773F4C /* PrayerData.swift */,
+			);
+			path = MuslimSalatApi;
+			sourceTree = "<group>";
+		};
+		A881AD2AE1A3B0555055A17F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FBC99E31D808E0CF1EA68604 /* Pods-View360.debug.xcconfig */,
+				C7183CDD7DDDE95FD8351B09 /* Pods-View360.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -110,9 +152,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7AEF2BD31D55141B00459455 /* Build configuration list for PBXNativeTarget "View360" */;
 			buildPhases = (
+				8283E10774E7BB14CB34E377 /* [CP] Check Pods Manifest.lock */,
 				7AEF2BB21D55141A00459455 /* Sources */,
 				7AEF2BB31D55141A00459455 /* Frameworks */,
 				7AEF2BB41D55141A00459455 /* Resources */,
+				9BD31F8990D5E10DC9B160A2 /* [CP] Embed Pods Frameworks */,
+				AF81791DC2DDDEC15313B380 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -199,14 +244,64 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		8283E10774E7BB14CB34E377 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		9BD31F8990D5E10DC9B160A2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-View360/Pods-View360-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AF81791DC2DDDEC15313B380 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-View360/Pods-View360-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		7AEF2BB21D55141A00459455 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				7AEF2BBC1D55141B00459455 /* ViewController.swift in Sources */,
+				7AF53D201D7DF6C200773F4C /* MuslimSalatApi.swift in Sources */,
+				7AF53D1E1D7DE96300773F4C /* PrayerData.swift in Sources */,
 				7AEF2BBA1D55141B00459455 /* AppDelegate.swift in Sources */,
-				7AEF2BDA1D55144400459455 /* SurroundView.swift in Sources */,
+				7AD9E4171D71EC4C00FF2EAA /* ThreeSixtyView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -333,6 +428,7 @@
 		};
 		7AEF2BD41D55141B00459455 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FBC99E31D808E0CF1EA68604 /* Pods-View360.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = View360/Info.plist;
@@ -344,6 +440,7 @@
 		};
 		7AEF2BD51D55141B00459455 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C7183CDD7DDDE95FD8351B09 /* Pods-View360.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = View360/Info.plist;
@@ -396,6 +493,7 @@
 				7AEF2BD51D55141B00459455 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7AEF2BD61D55141B00459455 /* Build configuration list for PBXNativeTarget "View360Tests" */ = {
 			isa = XCConfigurationList;
@@ -404,6 +502,7 @@
 				7AEF2BD81D55141B00459455 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
