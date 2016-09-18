@@ -8,6 +8,7 @@
 import UIKit
 import Foundation
 import CoreLocation
+import CoreMotion
 
 // MARK: - String Extension
 
@@ -35,6 +36,14 @@ typealias Radians = Double
 extension Radians{
     static func fromDegrees(degrees: Double)->Radians{
         return degrees * M_PI / 180
+    }
+    
+    init(radians : Double){
+        self = radians
+    }
+    
+    var degrees : Double {
+        return self * 180 / M_PI
     }
 }
 
@@ -76,6 +85,17 @@ class ThreeSixtyView: UIView, CLLocationManagerDelegate{
         }
     }
     
+    private var motionManager = CMMotionManager()
+    private var motionQueue = NSOperationQueue()
+    
+    var attitude : CMAttitude?{
+        didSet{
+            self.setNeedsDisplay()
+        }
+    }
+    
+    var drawingRect : Bool = false
+    
     var displayRect: CGRect{
         let degrees = self.heading?.magneticHeading ?? 0
         let x = CGFloat(Radians.fromDegrees(degrees) * self.radius)
@@ -91,10 +111,19 @@ class ThreeSixtyView: UIView, CLLocationManagerDelegate{
         self.locationManager.headingOrientation = CLDeviceOrientation.Portrait
         self.locationManager.headingFilter = 1
         self.locationManager.startUpdatingHeading()
+        
+        self.motionManager.deviceMotionUpdateInterval = 0.1
+        self.motionManager.startDeviceMotionUpdatesUsingReferenceFrame(
+        CMAttitudeReferenceFrame.XArbitraryZVertical
+        , toQueue: self.motionQueue){
+            (motion,error) in
+            self.attitude = motion?.attitude
+        }
     }
     
     deinit{
         self.locationManager.stopUpdatingHeading()
+        self.motionManager.stopDeviceMotionUpdates()
     }
 
     func append(component : Component){
@@ -120,6 +149,10 @@ class ThreeSixtyView: UIView, CLLocationManagerDelegate{
     // MARK: - Drawing
     
     override func drawRect(rect: CGRect) {
+        if drawingRect { return }
+        
+        drawingRect = true
+        
         self.drawInfo(CGPoint(x: 0,y: 50))
         for component in self.components{
             guard component.bounds != nil else{ continue }
@@ -128,14 +161,21 @@ class ThreeSixtyView: UIView, CLLocationManagerDelegate{
                 self.drawComponent(component)
             }
         }
+        
+        drawingRect = false
     }
     
     func drawInfo(point: CGPoint){
+        
         let heading = String(format: "%.0f",(self.heading?.magneticHeading ?? 0))
         let display = self.displayRect
         let startX = String(format: "%.0f", display.origin.x)
-        let endX = String(format: "0.f", display.origin.x + display.width)
-        "Angle:\(heading), Start X: \(startX), End X: \(endX))".drawAtPoint(point)
+        let endX = String(format: "%0.f", display.origin.x + display.width)
+        
+        let pitchRadians = Radians(self.attitude?.pitch ?? 0)
+        let pitch = String(format: "%.0f", pitchRadians.degrees )
+        
+        "Angle:\(heading), Start X: \(startX), End X: \(endX), Pitch: \(pitch))".drawAtPoint(point)
     }
     
     func drawComponent(component: Component){
