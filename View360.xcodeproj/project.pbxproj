@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7AAA26091D8F013E005F020C /* MuslimSalatApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAA26071D8F013E005F020C /* MuslimSalatApi.swift */; };
+		7AAA260A1D8F013E005F020C /* PrayerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAA26081D8F013E005F020C /* PrayerData.swift */; };
 		7AD9E4151D71E7D900FF2EAA /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD9E4141D71E7D900FF2EAA /* CoreLocation.framework */; };
 		7AD9E4171D71EC4C00FF2EAA /* ThreeSixtyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD9E4161D71EC4C00FF2EAA /* ThreeSixtyView.swift */; };
 		7AEF2BBA1D55141B00459455 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEF2BB91D55141B00459455 /* AppDelegate.swift */; };
@@ -16,8 +18,6 @@
 		7AEF2BC41D55141B00459455 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7AEF2BC21D55141B00459455 /* LaunchScreen.storyboard */; };
 		7AEF2BCF1D55141B00459455 /* View360Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEF2BCE1D55141B00459455 /* View360Tests.swift */; };
 		7AEF2BDC1D5518DB00459455 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AEF2BDB1D5518DB00459455 /* CoreMotion.framework */; };
-		7AF53D1E1D7DE96300773F4C /* PrayerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF53D1D1D7DE96300773F4C /* PrayerData.swift */; };
-		7AF53D201D7DF6C200773F4C /* MuslimSalatApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF53D1F1D7DF6C200773F4C /* MuslimSalatApi.swift */; };
 		9C6A526AEDB4B676BB8131B5 /* Pods_View360.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DF0D1E2ECB65E21FFD3C1A1 /* Pods_View360.framework */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +33,8 @@
 
 /* Begin PBXFileReference section */
 		5DF0D1E2ECB65E21FFD3C1A1 /* Pods_View360.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_View360.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7AAA26071D8F013E005F020C /* MuslimSalatApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MuslimSalatApi.swift; sourceTree = "<group>"; };
+		7AAA26081D8F013E005F020C /* PrayerData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrayerData.swift; sourceTree = "<group>"; };
 		7AD9E4141D71E7D900FF2EAA /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		7AD9E4161D71EC4C00FF2EAA /* ThreeSixtyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThreeSixtyView.swift; sourceTree = "<group>"; };
 		7AEF2BB61D55141B00459455 /* View360.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = View360.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -46,8 +48,6 @@
 		7AEF2BCE1D55141B00459455 /* View360Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View360Tests.swift; sourceTree = "<group>"; };
 		7AEF2BD01D55141B00459455 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7AEF2BDB1D5518DB00459455 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
-		7AF53D1D1D7DE96300773F4C /* PrayerData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrayerData.swift; sourceTree = "<group>"; };
-		7AF53D1F1D7DF6C200773F4C /* MuslimSalatApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MuslimSalatApi.swift; sourceTree = "<group>"; };
 		C7183CDD7DDDE95FD8351B09 /* Pods-View360.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-View360.release.xcconfig"; path = "Pods/Target Support Files/Pods-View360/Pods-View360.release.xcconfig"; sourceTree = "<group>"; };
 		FBC99E31D808E0CF1EA68604 /* Pods-View360.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-View360.debug.xcconfig"; path = "Pods/Target Support Files/Pods-View360/Pods-View360.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -81,6 +81,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		7AAA26021D8F008A005F020C /* QiblaAR */ = {
+			isa = PBXGroup;
+			children = (
+				7AF53D1C1D7DE80500773F4C /* MuslimSalatApi */,
+			);
+			path = QiblaAR;
+			sourceTree = "<group>";
+		};
 		7AEF2BAD1D55141A00459455 = {
 			isa = PBXGroup;
 			children = (
@@ -106,7 +114,7 @@
 		7AEF2BB81D55141B00459455 /* View360 */ = {
 			isa = PBXGroup;
 			children = (
-				7AF53D1C1D7DE80500773F4C /* MuslimSalatApi */,
+				7AAA26021D8F008A005F020C /* QiblaAR */,
 				7AEF2BB91D55141B00459455 /* AppDelegate.swift */,
 				7AEF2BBB1D55141B00459455 /* ViewController.swift */,
 				7AD9E4161D71EC4C00FF2EAA /* ThreeSixtyView.swift */,
@@ -130,8 +138,8 @@
 		7AF53D1C1D7DE80500773F4C /* MuslimSalatApi */ = {
 			isa = PBXGroup;
 			children = (
-				7AF53D1F1D7DF6C200773F4C /* MuslimSalatApi.swift */,
-				7AF53D1D1D7DE96300773F4C /* PrayerData.swift */,
+				7AAA26071D8F013E005F020C /* MuslimSalatApi.swift */,
+				7AAA26081D8F013E005F020C /* PrayerData.swift */,
 			);
 			path = MuslimSalatApi;
 			sourceTree = "<group>";
@@ -298,10 +306,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				7AEF2BBC1D55141B00459455 /* ViewController.swift in Sources */,
-				7AF53D201D7DF6C200773F4C /* MuslimSalatApi.swift in Sources */,
-				7AF53D1E1D7DE96300773F4C /* PrayerData.swift in Sources */,
 				7AEF2BBA1D55141B00459455 /* AppDelegate.swift in Sources */,
+				7AAA260A1D8F013E005F020C /* PrayerData.swift in Sources */,
 				7AD9E4171D71EC4C00FF2EAA /* ThreeSixtyView.swift in Sources */,
+				7AAA26091D8F013E005F020C /* MuslimSalatApi.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
