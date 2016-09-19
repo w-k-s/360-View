@@ -87,10 +87,29 @@ class ThreeSixtyView: UIView, CLLocationManagerDelegate{
     
     private var motionManager = CMMotionManager()
     private var motionQueue = NSOperationQueue()
+    private var accelerationQueue = NSOperationQueue()
     
     var attitude : CMAttitude?{
         didSet{
             self.setNeedsDisplay()
+        }
+    }
+    
+    var acceleration : CMAcceleration?{
+        didSet{
+            if (self.acceleration?.x >= 0.75) {
+                self.locationManager.headingOrientation = CLDeviceOrientation.LandscapeLeft
+            }
+            else if (self.acceleration?.x <= -0.75) {
+                self.locationManager.headingOrientation = CLDeviceOrientation.LandscapeRight
+            }
+            else if (self.acceleration?.y <= -0.75) {
+                self.locationManager.headingOrientation = CLDeviceOrientation.Portrait
+            }
+            else if (self.acceleration?.y >= 0.75) {
+                self.locationManager.headingOrientation = CLDeviceOrientation.PortraitUpsideDown
+            }
+            setNeedsDisplay()
         }
     }
     
@@ -107,8 +126,10 @@ class ThreeSixtyView: UIView, CLLocationManagerDelegate{
     }
     
     func setupView(){
+        
         self.locationManager.delegate = self
-        self.locationManager.headingOrientation = CLDeviceOrientation.Portrait
+        self.locationManager.headingOrientation = CLDeviceOrientation.init(rawValue: Int32(UIDevice.currentDevice().orientation.rawValue))!
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
         self.locationManager.headingFilter = 1
         self.locationManager.startUpdatingHeading()
         
@@ -116,14 +137,21 @@ class ThreeSixtyView: UIView, CLLocationManagerDelegate{
         self.motionManager.startDeviceMotionUpdatesUsingReferenceFrame(
         CMAttitudeReferenceFrame.XArbitraryZVertical
         , toQueue: self.motionQueue){
-            (motion,error) in
+            [unowned self] (motion,error) in
             self.attitude = motion?.attitude
+        }
+        
+        self.motionManager.accelerometerUpdateInterval = 0.1
+        self.motionManager.startAccelerometerUpdatesToQueue(self.accelerationQueue){
+            [unowned self] (accelerometer,error) in
+            self.acceleration = accelerometer?.acceleration
         }
     }
     
     deinit{
         self.locationManager.stopUpdatingHeading()
         self.motionManager.stopDeviceMotionUpdates()
+        self.motionManager.stopAccelerometerUpdates()
     }
 
     func append(component : Component){
