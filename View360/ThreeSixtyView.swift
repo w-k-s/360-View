@@ -9,6 +9,7 @@ import UIKit
 import Foundation
 import CoreLocation
 import CoreMotion
+import GLKit
 
 // MARK: - String Extension
 
@@ -175,9 +176,11 @@ class ThreeSixtyView: UIView, CLLocationManagerDelegate{
         let endX = String(format: "%0.f", display.origin.x + display.width)
 
         let elevation = String(format: "%.0f", self.elevationDegrees() ?? 0 )
-        let whatever = self.headingCorrectedForTilt() ?? 0
+        let pitchDegrees = Radians(self.motionManager.deviceMotion?.attitude.pitch ?? 0).degrees
+        let pitch = String(format: "%.0f", pitchDegrees)
+        let whatever = String(format: "%.0f,",self.headingCorrectedForTilt() ?? 0)
         
-        "Angle:\(heading), Start X: \(startX), End X: \(endX), Elevation: \(elevation), H: \(whatever))".drawAtPoint(point)
+        "Angle:\(heading), Start X: \(startX), End X: \(endX), Elevation: \(elevation), Pitch: \(pitch))".drawAtPoint(point)
     }
     
     func drawComponent(component: Component){
@@ -223,7 +226,24 @@ class ThreeSixtyView: UIView, CLLocationManagerDelegate{
         return elevation * -1
     }
     
+    
+    enum HeadingMethod : Int{
+        case None = 0
+        case GLKit = 1
+        case Quaternion = 2
+        case WeirdHack = 3
+        case Yaw = 4
+        case Experiment = 5
+    }
+    
+    var headingMethod : HeadingMethod = .None{
+        didSet{
+            self.setNeedsDisplay()
+        }
+    }
+    
     func headingCorrectedForTilt()->Double?{
+        
         guard let motion = self.motionManager.deviceMotion else{
             return nil
         }
@@ -232,53 +252,93 @@ class ThreeSixtyView: UIView, CLLocationManagerDelegate{
             return nil
         }
         
-        /*let aspect = Float(self.bounds.width / self.bounds.height)
-        let projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(45.0), aspect, 0.1, 100)
-        
-        
-        let r = motion.attitude.rotationMatrix
-        let camFromIMU = GLKMatrix4Make(Float(r.m11), Float(r.m12), Float(r.m13), 0,
-                           Float(r.m21), Float(r.m22), Float(r.m23), 0,
-                           Float(r.m31), Float(r.m32), Float(r.m33), 0,
-                           0,     0,     0,     1)
-            
-        let viewFromCam = GLKMatrix4Translate(GLKMatrix4Identity, 0, 0, 0);
-        let imuFromModel = GLKMatrix4Identity
-        let viewModel = GLKMatrix4Multiply(imuFromModel, GLKMatrix4Multiply(camFromIMU, viewFromCam))
-        var isInvertible : Bool = false
-        let modelView = GLKMatrix4Invert(viewModel, &isInvertible);
-        var viewport = [Int32](count:4,repeatedValue: 0)
-        
-        viewport[0] = 0;
-        viewport[1] = 0;
-        viewport[2] = Int32(self.frame.size.width);
-        viewport[3] = Int32(self.frame.size.height);
-
-        var success: Bool = false
-        let vector3 = GLKVector3Make(Float(self.frame.size.width)/2, Float(self.frame.size.height)/2, 1.0)
-        let calculatedPoint = GLKMathUnproject(vector3, modelView, projectionMatrix, &viewport, &success)
-    
-        return success ? Double(GLKMathRadiansToDegrees(atan2f(-calculatedPoint.y, calculatedPoint.x))) : nil
-        */
-        
         let yawDegrees = Radians(motion.attitude.yaw).degrees;
         let rollDegrees = Radians(motion.attitude.roll).degrees;
         
-        var rotationDegrees = 0.0
-        if(rollDegrees < 0 && yawDegrees < 0) // This is the condition where simply
-            // summing yawDegrees with rollDegrees
-            // wouldn't work.
-            // Suppose yaw = -177 and pitch = -165.
-            // rotationDegrees would then be -342,
-            // making your rotation angle jump all
-            // the way around the circle.
-        {
-            rotationDegrees = 360 - (-1 * (yawDegrees + rollDegrees));
+        switch(self.headingMethod){
+        case .None:
+            return heading.magneticHeading
+            
+        case .GLKit:
+            let aspect = fabsf(Float(self.bounds.width / self.bounds.height))
+            let projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(45.0), aspect, 0.1, 100)
+            
+            
+            let r = motion.attitude.rotationMatrix
+            let camFromIMU = GLKMatrix4Make(Float(r.m11), Float(r.m12), Float(r.m13), 0,
+                                            Float(r.m21), Float(r.m22), Float(r.m23), 0,
+                                            Float(r.m31), Float(r.m32), Float(r.m33), 0,
+                                            0,     0,     0,     1)
+            
+            let viewFromCam = GLKMatrix4Translate(GLKMatrix4Identity, 0, 0, 0);
+            let imuFromModel = GLKMatrix4Identity
+            let viewModel = GLKMatrix4Multiply(imuFromModel, GLKMatrix4Multiply(camFromIMU, viewFromCam))
+            var isInvertible : Bool = false
+            let modelView = GLKMatrix4Invert(viewModel, &isInvertible);
+            var viewport = [Int32](count:4,repeatedValue: 0)
+            
+            viewport[0] = 0;
+            viewport[1] = 0;
+            viewport[2] = Int32(self.frame.size.width);
+            viewport[3] = Int32(self.frame.size.height);
+            
+            var success: Bool = false
+            let vector3 = GLKVector3Make(Float(self.frame.size.width)/2, Float(self.frame.size.height)/2, 1.0)
+            let calculatedPoint = GLKMathUnproject(vector3, modelView, projectionMatrix, &viewport, &success)
+            
+            return success ? Double(GLKMathRadiansToDegrees(atan2f(-calculatedPoint.y, calculatedPoint.x))) : nil
+            
+        case .WeirdHack:
+            
+            var rotationDegrees = 0.0
+            if(rollDegrees < 0 && yawDegrees < 0) // This is the condition where simply
+                // summing yawDegrees with rollDegrees
+                // wouldn't work.
+                // Suppose yaw = -177 and pitch = -165.
+                // rotationDegrees would then be -342,
+                // making your rotation angle jump all
+                // the way around the circle.
+            {
+                rotationDegrees = 360 - (-1 * (yawDegrees + rollDegrees));
+            }
+            else
+            {
+                rotationDegrees = yawDegrees + rollDegrees;
+            }
+            return rotationDegrees;
+            
+        case .Quaternion:
+            
+            let quaternion = motion.attitude.quaternion
+            let tiltCompensation = Radians(asin(2*(quaternion.x*quaternion.z - quaternion.w*quaternion.y))).degrees;
+            
+            // 2.2 I transform magneticHeading with this tilt compensation
+            return heading.magneticHeading + tiltCompensation
+            
+        case .Yaw:
+            // Convert the radians yaw value to degrees then round up/down
+            let yaw = roundf(Float(yawDegrees))
+            
+            // Convert the yaw value to a value in the range of 0 to 360
+            var heading = yaw;
+            if (heading < 0) {
+                heading += 360;
+            }
+            
+            return Double(heading)
+            
+        case .Experiment:
+            guard let elevation = self.elevationDegrees() else{
+                return nil
+            }
+            let angle = Radians(motion.attitude.pitch).degrees
+            if elevation >= 45{
+                return 180 + heading.magneticHeading
+            }
+            return heading.magneticHeading
+            
+        
         }
-        else
-        {
-            rotationDegrees = yawDegrees + rollDegrees;
-        }
-        return rotationDegrees;
+       
     }
 }

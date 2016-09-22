@@ -58,8 +58,10 @@ class ViewController: UIViewController {
     }
 
 
-    @IBAction func resetFirstAttitude(){
-        //self.surroundView.resetFirstAttitude()
+    @IBAction func indexChanged(segmentedControl: UISegmentedControl){
+        if let method = ThreeSixtyView.HeadingMethod(rawValue: segmentedControl.selectedSegmentIndex){
+            self.threeSixtyView.headingMethod = method
+        }
     }
 }
 

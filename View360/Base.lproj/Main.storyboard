@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -21,31 +22,39 @@
                                 <rect key="frame" x="0.0" y="-1" width="600" height="601"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1PR-dN-wfv">
-                                <rect key="frame" x="281" y="562" width="39" height="30"/>
-                                <state key="normal" title="Reset"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="AiQ-bf-GS6">
+                                <rect key="frame" x="28" y="550" width="544" height="29"/>
+                                <segments>
+                                    <segment title="None"/>
+                                    <segment title="GLKit"/>
+                                    <segment title="Quaternion"/>
+                                    <segment title="WeirdHack"/>
+                                    <segment title="Yaw"/>
+                                    <segment title="Experiment"/>
+                                </segments>
                                 <connections>
-                                    <action selector="resetFirstAttitude" destination="BYZ-38-t0r" eventType="touchUpInside" id="tBs-P9-OpI"/>
+                                    <action selector="indexChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="rsB-6M-6fJ"/>
                                 </connections>
-                            </button>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="AiQ-bf-GS6" secondAttribute="trailing" constant="8" id="2jV-Sy-lBr"/>
                             <constraint firstItem="6xa-EF-nHq" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="9dW-3I-0fK"/>
+                            <constraint firstItem="AiQ-bf-GS6" firstAttribute="leading" secondItem="6xa-EF-nHq" secondAttribute="trailing" constant="-507" id="Hpo-yL-gZm"/>
                             <constraint firstItem="6xa-EF-nHq" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="LeU-KX-8tO"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="1PR-dN-wfv" secondAttribute="bottom" constant="8" id="QaS-7v-oKa"/>
-                            <constraint firstItem="1PR-dN-wfv" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Qrm-SD-B1m"/>
                             <constraint firstItem="6xa-EF-nHq" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-21" id="S85-Yv-br7"/>
-                            <constraint firstItem="1PR-dN-wfv" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gg2-by-fen"/>
-                            <constraint firstItem="1PR-dN-wfv" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="hXS-mA-hCZ"/>
+                            <constraint firstItem="AiQ-bf-GS6" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="TL4-x5-A0D"/>
+                            <constraint firstItem="AiQ-bf-GS6" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="8" id="WZr-CM-Pav"/>
                             <constraint firstItem="6xa-EF-nHq" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="jNj-KQ-lQX"/>
                             <constraint firstItem="6xa-EF-nHq" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="qNZ-jH-Au4"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="AiQ-bf-GS6" secondAttribute="bottom" constant="22" id="xY0-jQ-4FR"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="jNj-KQ-lQX"/>
-                                <exclude reference="Qrm-SD-B1m"/>
-                                <exclude reference="hXS-mA-hCZ"/>
+                                <exclude reference="Hpo-yL-gZm"/>
+                                <exclude reference="TL4-x5-A0D"/>
                             </mask>
                         </variation>
                     </view>
